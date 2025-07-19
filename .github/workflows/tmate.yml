@@ -49,12 +49,6 @@ jobs:
             -x "/usr/*" "/bin/*" "/lib/*" "/lib64/*" "/sbin/*" "/etc/*" "/var/*" \
             ".git/*" ".github/*" ".backup/*" || true
  
-      - name: 📤 Push updated files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🔁 Updated SSH + backup for ${{ github.event.client_payload.vps_name || 'manual-vps' }}"
-          file_pattern: 'links/*.txt .backup/*.zip'
- 
       - name: ⏳ Keep VPS alive (POSIX-safe loop)
         run: |
           i=1
